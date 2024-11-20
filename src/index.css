@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-container {
+  margin-top: 5%;
+}
+
+.todo-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-tasks {
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background: rgb(108, 167, 201)!important;
+  height: 30px;
+}
