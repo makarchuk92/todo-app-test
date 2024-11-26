@@ -1,10 +1,9 @@
 import React from "react";
 import { Todo } from "./Components/TodoList/TodoContainer";
-import { Container, Grid2, Paper } from "@mui/material";
+import { Container } from "@mui/material";
+import { FilterValuesType } from "./store/todoSlice";
 
-type FilterValuesType = "all" | "active" | "completed";
-
-type TodoListType = {
+export type TodoListType = {
   id: string;
   title: string;
   filter: FilterValuesType;
@@ -14,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Container fixed>
-            <Todo />
+        <Todo />
       </Container>
     </div>
   );

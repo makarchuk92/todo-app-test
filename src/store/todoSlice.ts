@@ -2,16 +2,20 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v1 } from "uuid";
 
 
+export type FilterValuesType = "all" | "active" | "completed";
+
 interface TodoState {
     todos: TaskType[]
     completed: boolean
     error: string
+    filter: FilterValuesType
 }
 
 const initialState: TodoState = {
     todos: [],
     completed: false,
-    error: ''
+    error: '',
+    filter: 'all'
 }
 
 export type TaskType = {
@@ -28,7 +32,8 @@ const todoSlice = createSlice({
             const newTodo = {
                 id: v1(),
                 title: action.payload,
-                isDone: false
+                isDone: false,
+
             }
             state.todos.push(newTodo)
         },
@@ -40,9 +45,15 @@ const todoSlice = createSlice({
             if(todo) {
             todo.isDone = !todo.isDone
             }
+        },
+
+        setFilterTodo: (state, action: PayloadAction<FilterValuesType>) => {
+            state.filter = action.payload
+    
         }
     }
 })
 
-export const {addTodo, removeTodo, changeStatusTodo} = todoSlice.actions
+export const {addTodo, removeTodo, changeStatusTodo,  setFilterTodo} = todoSlice.actions
 export default todoSlice.reducer
+

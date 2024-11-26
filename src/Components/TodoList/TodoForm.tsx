@@ -4,23 +4,23 @@ import { addTodo } from "../../store/todoSlice";
 import { useAppDispatch } from "../../hooks/redux";
 
 const TodoForm: FC = () => {
-  const [inputValue, setInputValue] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const dispatch = useAppDispatch()
+  const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
   const addTodoHandler = () => {
     if (inputValue.trim()) {
-      dispatch(addTodo(inputValue))
-      setInputValue("")
+      dispatch(addTodo(inputValue));
+      setInputValue("");
     } else {
       setError("Field is required");
     }
-  }
+  };
 
   const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-    setError(null)
-  }
+    setInputValue(e.target.value);
+    setError(null);
+  };
 
   return (
     <div className="todo-form">
@@ -29,7 +29,6 @@ const TodoForm: FC = () => {
         onChange={onChangeInputHandler}
         id="standard-helperText"
         label="enter value"
-        defaultValue="Default Value"
         variant="standard"
         error={!!error}
         helperText={error}

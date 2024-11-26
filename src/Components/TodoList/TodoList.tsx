@@ -1,37 +1,25 @@
-import { Checkbox, Grid2, IconButton, Paper } from '@mui/material'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { changeStatusTodo, removeTodo } from '../../store/todoSlice';
+import TodoListItems from "./TodoListItems";
+import { TaskType } from "../../store/todoSlice";
 
+type PropsType = {
+  filterTodos: TaskType[];
+};
 
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-const TodoList = () => {
-    const tasks = useAppSelector((state) => state.todos.todos);
-    const dispatch = useAppDispatch()
+const TodoList = (props: PropsType) => {
   return (
     <ul>
-    {tasks.map((task) => {
-      
-      return (
-        <Grid2 spacing={10}>
-          <Paper elevation={5}>
-            <li id={task.id}>
-              <div className="todo-tasks">
-                <Checkbox {...label} checked={task.isDone} 
-                onChange={() => dispatch(changeStatusTodo(task.id))} />
-                <h3>{task.title}</h3>
-                <IconButton aria-label="delete" onClick={() => dispatch(removeTodo(task.id))}>
-                  <DeleteIcon fontSize='small'/>
-                </IconButton>
-              </div>
-            </li>
-          </Paper>
-        </Grid2>
-      );
-    })}
-  </ul>
-  )
-}
+      {props.filterTodos.map((task) => {
+        return (
+          <TodoListItems
+            key={task.id}
+            id={task.id}
+            title={task.title}
+            isDone={task.isDone}
+          />
+        );
+      })}
+    </ul>
+  );
+};
 
-export default TodoList
+export default TodoList;
