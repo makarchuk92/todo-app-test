@@ -35,6 +35,22 @@ code {
 }
 
 .btn {
-  background: rgb(108, 167, 201)!important;
-  height: 30px;
+  background: #1976d2!important;
+  margin: 1% 0.4%!important;
+}
+
+.active-filter {
+  background-color: #8f203c; 
+  color: white;
+  border-color: #8f20657a;
+}
+
+.is-done {
+  opacity: 50%;
+} 
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
 }
